@@ -1,0 +1,323 @@
+{
+  "info": {
+    "_postman_id": "inventory-api-collection",
+    "name": "Inventory API",
+    "description": "Complete Postman collection for the CPE 114 Inventory System REST API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Categories",
+      "item": [
+        {
+          "name": "Get All Categories",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/categories",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["categories"]
+            },
+            "description": "Returns a list of all categories."
+          }
+        },
+        {
+          "name": "Get Category by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/categories/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["categories", "1"]
+            },
+            "description": "Returns a single category by its ID, including its associated items. Returns 404 if not found."
+          }
+        },
+        {
+          "name": "Create Category",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Electronics\",\n  \"description\": \"Electronic devices and accessories\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/categories",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["categories"]
+            },
+            "description": "Creates a new category. Returns 201 on success, 400 if name is missing or duplicate."
+          }
+        },
+        {
+          "name": "Update Category",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Consumer Electronics\",\n  \"description\": \"Updated description\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/categories/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["categories", "1"]
+            },
+            "description": "Updates a category by ID. Returns 404 if not found."
+          }
+        },
+        {
+          "name": "Delete Category",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/categories/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["categories", "1"]
+            },
+            "description": "Deletes a category by ID. Returns 404 if not found."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Suppliers",
+      "item": [
+        {
+          "name": "Get All Suppliers",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/suppliers",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["suppliers"]
+            },
+            "description": "Returns a list of all suppliers."
+          }
+        },
+        {
+          "name": "Get Supplier by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/suppliers/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["suppliers", "1"]
+            },
+            "description": "Returns a single supplier by ID, including all associated items. Returns 404 if not found."
+          }
+        },
+        {
+          "name": "Get Items by Supplier",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/suppliers/1/items",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["suppliers", "1", "items"]
+            },
+            "description": "Returns all items supplied by the given supplier. Returns 404 if supplier not found."
+          }
+        },
+        {
+          "name": "Create Supplier",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"TechSource Inc.\",\n  \"contactEmail\": \"contact@techsource.com\",\n  \"phone\": \"+1-800-555-1234\",\n  \"address\": \"123 Tech Park, Silicon Valley, CA\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/suppliers",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["suppliers"]
+            },
+            "description": "Creates a new supplier. Returns 201 on success, 400 if name or email is missing or email is duplicate."
+          }
+        },
+        {
+          "name": "Update Supplier",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phone\": \"+1-800-999-0000\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/suppliers/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["suppliers", "1"]
+            },
+            "description": "Updates a supplier by ID. Returns 404 if not found."
+          }
+        },
+        {
+          "name": "Delete Supplier",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/suppliers/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["suppliers", "1"]
+            },
+            "description": "Deletes a supplier by ID. Returns 404 if not found."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Items",
+      "item": [
+        {
+          "name": "Get All Items",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/items",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["items"]
+            },
+            "description": "Returns all items with their associated category."
+          }
+        },
+        {
+          "name": "Get Item by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/items/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["items", "1"]
+            },
+            "description": "Returns a single item by ID, including its category and all assigned suppliers. Returns 404 if not found."
+          }
+        },
+        {
+          "name": "Create Item",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Wireless Mouse\",\n  \"description\": \"Ergonomic wireless mouse with USB receiver\",\n  \"sku\": \"MOUSE-WL-001\",\n  \"quantity\": 50,\n  \"price\": 29.99,\n  \"categoryId\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/items",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["items"]
+            },
+            "description": "Creates a new inventory item. Returns 201 on success, 400 if required fields are missing."
+          }
+        },
+        {
+          "name": "Update Item",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"quantity\": 75,\n  \"price\": 24.99\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/items/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["items", "1"]
+            },
+            "description": "Updates an item by ID. Returns 404 if not found."
+          }
+        },
+        {
+          "name": "Delete Item",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/items/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["items", "1"]
+            },
+            "description": "Deletes an item by ID. Returns 404 if not found."
+          }
+        },
+        {
+          "name": "Assign Supplier to Item",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"supplyPrice\": 15.00,\n  \"leadTimeDays\": 7\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/items/1/suppliers/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["items", "1", "suppliers", "1"]
+            },
+            "description": "Assigns a supplier to an item (many-to-many). Optionally includes supply price and lead time. Returns 404 if item or supplier not found, 400 if already assigned."
+          }
+        },
+        {
+          "name": "Remove Supplier from Item",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/items/1/suppliers/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["items", "1", "suppliers", "1"]
+            },
+            "description": "Removes a supplier from an item. Returns 404 if the item, supplier, or the assignment does not exist."
+          }
+        }
+      ]
+    }
+  ]
+}
